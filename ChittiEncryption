@@ -1,0 +1,35 @@
+#include<stdio.h>
+int main() {
+  char *arr = "sss2rab3aygj2";
+  char *arr1;
+  int j=0,size=0;
+  for(int i=0;i<strlen(arr);i++) {
+    if( (*(arr+i)>=49) && (*(arr+i)<=57) ) {
+      int n = (int) *(arr+i);
+      n=n-48;
+      size+=n;
+      i=i-j;
+    } else {
+        size++;
+      }
+  }
+  char *result = (char*) malloc(size * sizeof(char));
+  int k=0;
+  for(int i=0;i<strlen(arr);i++) {
+    if( (*(arr+i)>=49) && (*(arr+i)<=57) ) {
+      int n = (int) *(arr+i);
+      n=n-48;
+      for(int j=0;j<n;j++) {
+        *(result+k) = *(arr+i-1);
+        k++;
+      }
+    } else {
+      *(result+k) = *(arr+i);
+      k++;
+    }
+  }
+  for(int l=0;l<strlen(result);l++)
+  printf("%c",*(result+l));
+  return 0;
+}
+
